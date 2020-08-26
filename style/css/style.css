@@ -1,0 +1,344 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: rgba(245, 242, 242, 0.6);
+}
+
+.wrap {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #424242;
+  padding: 3em 0;
+}
+
+.header .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .data {
+  line-height: 1.8em;
+  color: #FFD366;
+}
+
+.header .data input {
+  font-size: 110%;
+  outline: none;
+  border: 3px solid  #FFD366;
+  color: #FFFFFF;
+  background: rgba(66, 66, 66, 0.6);
+  border-radius: 0.5em;
+}
+
+.header .data input::-webkit-outer-spin-button,
+.header .data input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+  margin: 0;
+}
+
+.header .data input[type=number] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+.header .count {
+  width: 30%;
+}
+
+.header .count .result {
+  display: block;
+}
+
+.header .count .result input {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #FFD366;
+  font-size: 110%;
+  cursor: pointer;
+  outline: none;
+}
+
+.header .count .result input:hover {
+  -webkit-box-shadow: 0 0 0.3em 0.1em #9b9a9a;
+          box-shadow: 0 0 0.3em 0.1em #9b9a9a;
+  background: #f8cc5b;
+}
+
+.header .count .result input:active {
+  background: #f7b307;
+}
+
+.header .count .result.close {
+  display: none;
+}
+
+.header .count .displayresult {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .count .displayresult .bmi-text {
+  width: 120px;
+  height: 120px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.header .count .displayresult .bmi-text p {
+  font-size: 160%;
+}
+
+.header .count .displayresult .bmi-text a {
+  background: white;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  right: 0;
+  border: 5px solid #424242;
+}
+
+.header .count .displayresult.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .count .displayresult.open.green .bmi-text {
+  border: 5px solid #86D73E;
+  color: #86D73E;
+}
+
+.header .count .displayresult.open.green .bmi-text a {
+  background: #86D73E;
+}
+
+.header .count .displayresult.open.green p {
+  color: #86D73E;
+}
+
+.header .count .displayresult.open.blue .bmi-text {
+  border: 5px solid #31BAF9;
+  color: #31BAF9;
+}
+
+.header .count .displayresult.open.blue .bmi-text a {
+  background: #31BAF9;
+}
+
+.header .count .displayresult.open.blue p {
+  color: #31BAF9;
+}
+
+.header .count .displayresult.open.orange .bmi-text {
+  border: 5px solid #FF982D;
+  color: #FF982D;
+}
+
+.header .count .displayresult.open.orange .bmi-text a {
+  background: #FF982D;
+}
+
+.header .count .displayresult.open.orange p {
+  color: #FF982D;
+}
+
+.header .count .displayresult.open.orangeone .bmi-text {
+  border: 5px solid #FF6C02;
+  color: #FF6C02;
+}
+
+.header .count .displayresult.open.orangeone .bmi-text a {
+  background: #FF6C02;
+}
+
+.header .count .displayresult.open.orangeone p {
+  color: #FF6C02;
+}
+
+.header .count .displayresult.open.orangetwo .bmi-text {
+  border: 5px solid #FF6C02;
+  color: #FF6C02;
+}
+
+.header .count .displayresult.open.orangetwo .bmi-text a {
+  background: #FF6C02;
+}
+
+.header .count .displayresult.open.orangetwo p {
+  color: #FF6C02;
+}
+
+.header .count .displayresult.open.red .bmi-text {
+  border: 5px solid #FF1200;
+  color: #FF1200;
+}
+
+.header .count .displayresult.open.red .bmi-text a {
+  background: #FF1200;
+}
+
+.header .count .displayresult.open.red p {
+  color: #FF1200;
+}
+
+.content {
+  margin: 2.5em auto 0 auto;
+}
+
+.content h2 {
+  font-size: 150%;
+  text-align: center;
+}
+
+.content .reset {
+  font-size: 120%;
+  border-radius: 0.3em;
+  outline: none;
+  cursor: pointer;
+  background: -webkit-gradient(linear, left top, left bottom, from(#eff30f), to(#eb7f7f));
+  background: linear-gradient(#eff30f, #eb7f7f);
+  -webkit-box-shadow: 0 0 0.1em 0.05em rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 0.1em 0.05em rgba(0, 0, 0, 0.3);
+  -webkit-transition: all .3S;
+  transition: all .3S;
+  margin-left: 1em;
+}
+
+.content .reset:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.content .bmi-data {
+  margin-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.content .bmi-data li {
+  width: 80%;
+  margin-bottom: 2em;
+  background: #ffffff;
+  padding: 1.5em 1em;
+  text-align: center;
+  -webkit-box-shadow: 0 0 0.2em 0.05em rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 0.2em 0.05em rgba(0, 0, 0, 0.6);
+}
+
+.content .bmi-data table {
+  width: 100%;
+}
+
+.content .bmi-data table td {
+  font-size: 120%;
+}
+
+.content .bmi-data table td:first-child {
+  width: 15%;
+  text-align: left;
+}
+
+.content .bmi-data table span {
+  font-size: 80%;
+  margin-right: 0.3em;
+}
+
+.content .bmi-data table input {
+  margin-left: 0.8em;
+  cursor: pointer;
+}
+
+.content .bmi-data li.green {
+  border-left: 7px solid #86D73F;
+}
+
+.content .bmi-data li.blue {
+  border-left: 7px solid #31BAF9;
+}
+
+.content .bmi-data li.orange {
+  border-left: 7px solid #FF982D;
+}
+
+.content .bmi-data li.orangeone {
+  border-left: 7px solid #FF6C02;
+}
+
+.content .bmi-data li.orangetwo {
+  border-left: 7px solid #FF6C02;
+}
+
+.content .bmi-data li.red {
+  border-left: 7px solid #FF1200;
+}
+
+.footer {
+  margin-top: 3em;
+  background: #FFD366;
+  padding: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=style.css.map */

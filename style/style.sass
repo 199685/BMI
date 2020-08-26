@@ -1,0 +1,204 @@
+*
+  box-sizing: border-box
+body 
+  background: rgba(245, 242, 242, .6)
+.wrap
+  max-width: 1024px
+  margin: 0 auto
+
+.header
+  display: flex
+  justify-content: space-around
+  align-items: center
+  background: #424242
+  padding: 3em 0
+  .img 
+    display: flex
+    justify-content: flex-end
+    align-items: center
+  .data
+    line-height: 1.8em
+    color: #FFD366
+    input
+      font-size: 110%
+      outline: none
+      border: 3px solid  #FFD366
+      color: #FFFFFF
+      background: rgba(66, 66, 66, .6)
+      border-radius: 0.5em
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button
+      appearance: none
+      margin: 0
+    input[type=number]
+      appearance: textfield
+  .count
+    width: 30%
+    .result
+      display: block
+      input
+        width: 120px
+        height: 120px
+        border-radius: 50%
+        background: #FFD366
+        font-size: 110%
+        cursor: pointer
+        outline: none
+        &:hover
+          box-shadow: 0 0 0.3em 0.1em #9b9a9a
+          background: #f8cc5b
+        &:active
+          background: #f7b307
+    .result.close
+      display: none
+    .displayresult
+      display: none
+      align-items: center
+      .bmi-text
+        width: 120px
+        height: 120px
+        border: 3px solid #000
+        border-radius: 50%
+        text-align: center
+        margin-right: 0.5em
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        position: relative
+        p 
+          font-size: 160%
+        a 
+          background: white
+          width: 40px
+          height: 40px
+          display: flex
+          border-radius: 50%
+          align-items: center
+          justify-content: center
+          position: absolute
+          right: 0 
+          border: 5px solid #424242
+    .displayresult.open
+      display: flex
+    .displayresult.open.green
+      .bmi-text
+        border: 5px solid #86D73E
+        color: #86D73E
+        a 
+          background: #86D73E
+      p 
+        color: #86D73E     
+    .displayresult.open.blue
+      .bmi-text
+        border: 5px solid #31BAF9 
+        color: #31BAF9 
+        a 
+          background: #31BAF9 
+      p 
+        color: #31BAF9      
+    .displayresult.open.orange
+      .bmi-text
+        border: 5px solid #FF982D
+        color: #FF982D
+        a 
+          background: #FF982D
+      p 
+        color: #FF982D      
+    .displayresult.open.orangeone
+      .bmi-text
+        border: 5px solid #FF6C02
+        color: #FF6C02
+        a 
+          background: #FF6C02
+      p 
+        color: #FF6C02     
+    .displayresult.open.orangetwo
+      .bmi-text
+        border: 5px solid #FF6C02
+        color: #FF6C02
+        a 
+          background: #FF6C02
+      p 
+        color: #FF6C02      
+    .displayresult.open.red
+      .bmi-text
+        border: 5px solid #FF1200
+        color: #FF1200
+        a 
+          background: #FF1200
+      p 
+        color: #FF1200      
+
+.content
+  margin: 2.5em auto 0 auto
+  h2 
+    font-size: 150%
+    text-align: center
+  .reset
+    font-size: 120%
+    border-radius: 0.3em
+    outline: none
+    cursor: pointer
+    background: linear-gradient(#eff30f,#eb7f7f)
+    box-shadow: 0 0 0.1em 0.05em rgba(0, 0, 0, 0.3)
+    transition: all .3S
+    margin-left: 1em
+    &:hover
+      transform: scale(1.1)
+  .bmi-data
+    margin-top: 2em
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    li 
+      width: 80%
+      margin-bottom: 2em
+      background: #ffffff
+      padding: 1.5em 1em
+      text-align: center
+      box-shadow: 0 0 0.2em 0.05em rgba(0, 0, 0, 0.6)
+    table 
+      width: 100%
+      td 
+        font-size: 120%
+        &:first-child
+          width: 15%
+          text-align: left
+      span 
+        font-size: 80%
+        margin-right: 0.3em
+      input 
+        margin-left: 0.8em
+        cursor: pointer
+    li.green 
+      border-left: 7px solid #86D73F
+    li.blue
+      border-left: 7px solid #31BAF9 
+    li.orange
+      border-left: 7px solid #FF982D
+    li.orangeone
+      border-left: 7px solid #FF6C02
+    li.orangetwo 
+      border-left: 7px solid #FF6C02
+    li.red 
+      border-left: 7px solid #FF1200
+      
+.footer
+  margin-top: 3em
+  background: #FFD366
+  padding: 1em 0
+  display: flex
+  justify-content: center
+  
+    
+  
+      
+
+      
+    
+
+ 
+      
+     
+  
