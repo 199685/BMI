@@ -1,16 +1,16 @@
 
 window.onload = function () {
-    var count = document.querySelector('.count');
-    var data = JSON.parse(localStorage.getItem('BMIdata')) || [];
-    var remove = document.querySelector('.content');
+    const count = document.querySelector('.count');
+    let data = JSON.parse(localStorage.getItem('BMIdata')) || [];
+    const remove = document.querySelector('.content');
     outputData();
 
 
     function inputbmi(e) {
-        var height = document.querySelector('.data #cm');
-        var weight = document.querySelector('.data #kg');
-        var storage = document.querySelector('.data #storage');
-        var noStorage = document.querySelector('.data #nostorage');
+        let height = document.querySelector('.data #cm');
+        let weight = document.querySelector('.data #kg');
+        let storage = document.querySelector('.data #storage');
+        let noStorage = document.querySelector('.data #nostorage');
 
         if (height.value > 0 && weight.value > 0) {
             if (noStorage.checked == false && storage.checked == false) {
@@ -32,18 +32,18 @@ window.onload = function () {
     //count and add local storage data
     function countbmi(cm, kg) {
 
-        var height = cm;
-        var weight = kg;
-        var bmi = Math.round((weight / ((height * height))) * 1000000) / 100;
-        var status = '';
-        var myDate = new Date();
-        var day = myDate.toLocaleDateString();
+        let height = cm;
+        let weight = kg;
+        let bmi = Math.round((weight / ((height * height))) * 1000000) / 100;
+        let status = '';
+        let myDate = new Date();
+        let day = myDate.toLocaleDateString();
 
 
-        var color = document.querySelector('.displayresult');
-        var statusName = document.querySelector('.displayresult >p');
-        var bmiClass = document.querySelector('.displayresult >div p')
-        var Storage = document.querySelector('.data #storage');
+        let color = document.querySelector('.displayresult');
+        let statusName = document.querySelector('.displayresult >p');
+        let bmiClass = document.querySelector('.displayresult >div p')
+        let Storage = document.querySelector('.data #storage');
 
 
         if (bmi <= 18.5) {
@@ -81,7 +81,7 @@ window.onload = function () {
                 myWeight: weight,
                 myDay: day
             });
-            var strData = JSON.stringify(data);
+            let strData = JSON.stringify(data);
             localStorage.setItem('BMIdata', strData);
 
         };
@@ -89,42 +89,55 @@ window.onload = function () {
     };
 
     function outputData() {
-        var len = data.length;
-        var str = '';
+        let len = data.length;
+        let str = '';
 
-        for (var i = 0; i < len; i++) {
-            str += changeStyle(data[i].myStatusName) + '<table><tr><td>' + data[i].myStatusName + '</td><td><span>BMI</span>' + data[i].myBmi + '</td><td><span>weight</span>' + data[i].myHeight + 'kg</td><td><span>height</span>' + data[i].myWeight + 'cm</td><td><span>' + data[i].myDay + '</span><input data-num="' + [i] + '" type="button" value="x"></td></tr></table></li>'
+        for (let i = 0; i < len; i++) {
+            str+=`<li class=${changeStyle(data[i].myStatusName)}> 
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>${data[i].myStatusName}</td>
+                                    <td><span>BMI</span>${data[i].myBmi}</td>
+                                    <td><span>weight</span>${data[i].myWeight}kg</td>
+                                    <td><span>height</span>${data[i].myHeight}cm</td>
+                                    <td>${data[i].myDay}<span></span>
+                                    <input data-num=${[i]} type="button" value="x"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>`;
         }
 
-        document.querySelector('.bmi-data').innerHTML = str
+        document.querySelector('.bmi-data').innerHTML = str;
 
     };
 
-    function changeStyle(statusName) {
-        var statusName = statusName;
-        switch (statusName) {
+    function changeStyle(name) {
+        let statusName = name;
+        switch (name) {
             case '過輕':
-                return '<li class="blue">'
+                return "blue"
             case '理想':
-                return '<li class="green">'
+                return "green"
             case '過重':
-                return '<li class="orange">'
+                return "orange"
             case '輕度肥胖':
-                return '<li class="orangeone">'
+                return "orangeone"
             case '中度肥胖':
-                return '<li class="orangetwo">'
+                return "orangetwo"
             case '重度肥胖':
-                return '<li class="red">'
+                return "red"
         }
 
     };
     //open and close start icon
     function open(e) {
-        var even = e;
-        var height = document.querySelector('.data #cm');
-        var weight = document.querySelector('.data #kg');
-        var noStorage = document.querySelector('.data #nostorage');
-        var storage = document.querySelector('.data #storage');
+        let even = e;
+        let height = document.querySelector('.data #cm');
+        let weight = document.querySelector('.data #kg');
+        let noStorage = document.querySelector('.data #nostorage');
+        let storage = document.querySelector('.data #storage');
 
         if (even.target.nodeName == 'A' || even.target.nodeName == 'IMG') {
             document.querySelector('.result').classList.remove('close');
@@ -141,16 +154,16 @@ window.onload = function () {
     };
     //remove data
     remove.addEventListener('click', function (e) {
-        var deleNumber = Number(e.target.dataset.num)
+        let deleNumber = Number(e.target.dataset.num)
 
         if (deleNumber >= 0) {
             data.splice(deleNumber, 1)
-            var strData = JSON.stringify(data);
+            let strData = JSON.stringify(data);
             localStorage.setItem('BMIdata', strData)
 
         } else if (e.target.nodeName == 'INPUT') {
             data = []
-            var strData = JSON.stringify(data);
+            let strData = JSON.stringify(data);
             localStorage.setItem('BMIdata', strData)
         }
         outputData()
