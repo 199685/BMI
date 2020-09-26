@@ -11,20 +11,24 @@ window.onload = function () {
         let weight = document.querySelector('.data #kg');
         let storage = document.querySelector('.data #storage');
         let noStorage = document.querySelector('.data #nostorage');
-
+        let message = document.querySelector('.count >p')
         if (height.value > 0 && weight.value > 0) {
-            if (noStorage.checked == false && storage.checked == false) {
-                alert('請選擇是否儲存record');
-            } else if (e.target.nodeName == 'INPUT') {
+            if (noStorage.checked === false && storage.checked === false) {
+                message.textContent = '請選擇是否儲存record'
+                alert('請選擇是否儲存record!!!');
+            } else if (e.target.nodeName === 'INPUT') {
                 countbmi(height.value, weight.value);
                 open(e);
+                message.textContent = ''
             }
         } else {
+            message.textContent = '請輸入身高體重!!!'
             alert('請輸入身高體重');
         };
 
-        if (e.target.nodeName == 'A' || e.target.nodeName == 'IMG') {
+        if (e.target.nodeName === 'A' || e.target.nodeName === 'IMG') {
             open(e)
+            message.textContent = ''
         }
 
     };
@@ -38,45 +42,49 @@ window.onload = function () {
         let status = '';
         let myDate = new Date();
         let day = myDate.toLocaleDateString();
+        let color;
 
-
-        let color = document.querySelector('.displayresult');
+        let colorClass = document.querySelector('.displayresult');
         let statusName = document.querySelector('.displayresult >p');
         let bmiClass = document.querySelector('.displayresult >div p')
         let Storage = document.querySelector('.data #storage');
 
 
-        if (bmi <= 18.5) {
-            status = '過輕';
-            color.classList.add('blue')
-            statusName.textContent = status
-        } else if (bmi <= 25) {
-            status = '理想'
-            color.classList.add('green')
-            statusName.textContent = status
-        } else if (bmi <= 30) {
-            status = '過重'
-            color.classList.add('orange')
-            statusName.textContent = status
-        } else if (bmi <= 35) {
-            status = '輕度肥胖'
-            color.classList.add('orangeone')
-            statusName.textContent = status
-        } else if (bmi <= 40) {
-            status = '中度肥胖'
-            color.classList.add('orangetwo')
-            statusName.textContent = status
-        } else {
-            status = '重度肥胖'
-            color.classList.add('red')
-            statusName.textContent = status
+        switch (true) {
+            case bmi <= 18.5:
+                status = '過輕';
+                color = 'blue'
+                break;
+            case bmi <= 25:
+                status = '理想'
+                color = 'green'
+                break;
+            case bmi <= 30:
+                status = '過重'
+                color = 'orange'
+                break;
+            case bmi <= 35:
+                status = '輕度肥胖'
+                color = 'orangeone'
+                break;
+            case bmi <= 40:
+                status = '中度肥胖'
+                color = 'orangetwo'
+                break;
+            case bmi > 40:
+                status = '重度肥胖'
+                color = 'red'
+
         }
         bmiClass.textContent = bmi
+        colorClass.classList.add(color)
+        statusName.textContent = status
 
-        if (Storage.checked == true) {
+        if (Storage.checked === true) {
             data.push({
                 myStatusName: status,
                 myBmi: bmi,
+                myColor: color,
                 myHeight: height,
                 myWeight: weight,
                 myDay: day
@@ -85,6 +93,7 @@ window.onload = function () {
             localStorage.setItem('BMIdata', strData);
 
         };
+
         outputData();
     };
 
@@ -93,7 +102,7 @@ window.onload = function () {
         let str = '';
 
         for (let i = 0; i < len; i++) {
-            str+=`<li class=${changeStyle(data[i].myStatusName)}> 
+            str += `<li class=${data[i].myColor}> 
                         <table>
                             <tbody>
                                 <tr>
@@ -107,30 +116,13 @@ window.onload = function () {
                             </tbody>
                         </table>
                     </li>`;
-        }
 
+        }
         document.querySelector('.bmi-data').innerHTML = str;
 
     };
 
-    function changeStyle(name) {
-        let statusName = name;
-        switch (name) {
-            case '過輕':
-                return "blue"
-            case '理想':
-                return "green"
-            case '過重':
-                return "orange"
-            case '輕度肥胖':
-                return "orangeone"
-            case '中度肥胖':
-                return "orangetwo"
-            case '重度肥胖':
-                return "red"
-        }
 
-    };
     //open and close start icon
     function open(e) {
         let even = e;
@@ -139,7 +131,7 @@ window.onload = function () {
         let noStorage = document.querySelector('.data #nostorage');
         let storage = document.querySelector('.data #storage');
 
-        if (even.target.nodeName == 'A' || even.target.nodeName == 'IMG') {
+        if (even.target.nodeName === 'A' || even.target.nodeName === 'IMG') {
             document.querySelector('.result').classList.remove('close');
             document.querySelector('.displayresult').className = 'displayresult';
             height.value = ''
@@ -161,7 +153,7 @@ window.onload = function () {
             let strData = JSON.stringify(data);
             localStorage.setItem('BMIdata', strData)
 
-        } else if (e.target.nodeName == 'INPUT') {
+        } else if (e.target.nodeName === 'INPUT') {
             data = []
             let strData = JSON.stringify(data);
             localStorage.setItem('BMIdata', strData)
@@ -170,3 +162,4 @@ window.onload = function () {
     }, false)
 
 };
+

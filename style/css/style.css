@@ -68,6 +68,12 @@ body {
   width: 30%;
 }
 
+.header .count > p {
+  font-size: 25px;
+  color: yellow;
+  padding-top: 15px;
+}
+
 .header .count .result {
   display: block;
 }
